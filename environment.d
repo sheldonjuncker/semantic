@@ -8,30 +8,11 @@ import std.exception;
 */
 class Environment
 {
+	///Index of last declared variable
+	int varIndex;
+
 	///Storage for variables
 	SemanticVar[string][] varScopes;
-
-	/**
-	* Determines if a variable exists.
-	* @param currentScope Specifies whether or not to look in
-	* only the current scope. Default = false
-	*/
-	bool varInScope(string name, bool currentScope = false)
-	{
-		foreach(SemanticVar[string] varScope; varScopes)
-		{
-			//Get semantic variable
-			SemanticVar *var = (name in varScope);
-			if(var !is null)
-				return true;
-
-			if(currentScope)
-				break;
-		}
-
-		//Not found
-		return false;
-	}
 
 	/**
 	* Gets a variable that is known to exist.
@@ -75,6 +56,11 @@ class Environment
 		{
 			//Add the variable
 			current[name] = var;
+
+			//Set variable Index
+			var.var.semInfo.varIndex = varIndex++;
+
+			varScopes[0] = current;
 		}
 	}
 

@@ -18,6 +18,9 @@ class SemanticInfo
 	///Used by the optimizer to remove unnecessary nodes
 	int uses;
 
+	///The number of assignments for variables
+	int assignments;
+
 	///The variable's index in the frame
 	int varIndex;
 }

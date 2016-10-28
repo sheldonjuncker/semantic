@@ -1,5 +1,5 @@
 module semantic.variable;
-import parser.nodes.IdentNode;
+import parser.nodes.VarDeclareNode;
 
 /**
 * This class represents a variable used in semantic analysis.
@@ -7,12 +7,12 @@ import parser.nodes.IdentNode;
 class SemanticVar
 {
 	///Reference to a variable declaration node
-	IdentNode *var;
-
+	VarDeclareNode var;
+	
 	/**
 	* Constructs a new semantic variable.
 	*/
-	this(IdentNode *var)
+	this(VarDeclareNode var)
 	{
 		this.var = var;
 	}

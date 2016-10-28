@@ -18,6 +18,7 @@ int main()
 
 	//Initialize semantic analyzer with AST
 	SemanticAnalyzer s = new SemanticAnalyzer(ast);
+	s.analyzeVariables();
 
 	return 0;
 }

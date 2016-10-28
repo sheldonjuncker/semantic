@@ -14,6 +14,26 @@ class SemanticAnalyzer
 	Node ast;
 
 	/**
+	* Verifies that variables are used correctly.
+	* It does the following:
+	* 	1. Verifies that only lvalues are assigned to.
+	* 	2. Verifies that variables are declared before use.
+	*	3. Verifies that variables are not redeclared.
+	* 	4. Verifies that variables may be assigned to before use.
+	* 	5. Counts all possible uses of a variable for optimization.
+	* Does not check data types.
+	* @note * This only verifies that there is an assignment
+	* that might be executed, not that it necessarily has to be
+	* executed. (It could be in a if/while.)
+	*/
+	void analyzeVariables()
+	{
+		//Create new environment
+		Environment e = new Environment;
+		ast.analyzeVariables(e);
+	}
+
+	/**
 	* Constructs the semantic analyzer with the file to parse.
 	*/
 	this(Node ast)
